@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:qual="http://www.sbml.org/sbml/level3/version1/qual/version1" level="3" version="1" qual:required="true">
+  <model>
+    <listOfCompartments>
+      <compartment id="cell" constant="true"/>
+      <compartment id="ext" constant="true"/>
+    </listOfCompartments>
+    <qual:listOfQualitativeSpecies>
+      <qual:qualitativeSpecies sboTerm="SBO:0000252" qual:id="RPO2" qual:compartment="cell" qual:constant="false" qual:name="RPO2" qual:initialLevel="0" qual:maxLevel="1"/>
+      <qual:qualitativeSpecies sboTerm="SBO:0000247" qual:id="Oxygen" qual:compartment="ext" qual:constant="false" qual:name="Oxygen" qual:initialLevel="1" qual:maxLevel="1">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>STATE 0:[0.0,0.0]</p>
+            <p>STATE 1:]0.0,+inf]</p>
+          </body>
+        </notes>
+      </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies sboTerm="SBO:0000176" qual:id="Tc2" qual:compartment="cell" qual:constant="false" qual:name="Tc2" qual:initialLevel="0" qual:maxLevel="1">
+	<notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>STATE 0:[0,0]</p>
+            <p>STATE 1:]0,10.5]</p>
+          </body>
+        </notes>
+      </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies sboTerm="SBO:0000247" qual:id="Carbon1" qual:compartment="ext" qual:constant="false" qual:name="Carbon1" qual:initialLevel="0" qual:maxLevel="1">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>STATE 0:[0,0]</p>
+            <p>STATE 1:]0,+inf]</p>
+          </body>
+        </notes>
+      </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies sboTerm="SBO:0000252" qual:id="RPcl" qual:compartment="cell" qual:constant="false" qual:name="RPcl" qual:initialLevel="0" qual:maxLevel="1"/>
+      <qual:qualitativeSpecies sboTerm="SBO:0000176" qual:id="Rres" qual:compartment="cell" qual:constant="false" qual:name="Rres" qual:initialLevel="0" qual:maxLevel="1">
+	<notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>STATE 0:[0,0]</p>
+            <p>STATE 1:]0,+inf]</p>
+          </body>
+        </notes>
+      </qual:qualitativeSpecies>
+    </qual:listOfQualitativeSpecies>
+    <qual:listOfTransitions>
+      <qual:transition qual:id="tr_RPO2">
+        <qual:listOfInputs>
+          <qual:input sboTerm="SBO:0000172" qual:id="tr_RPO2_in_Oxygen" qual:thresholdLevel="1" qual:qualitativeSpecies="Oxygen" qual:transitionEffect="none" qual:sign="positive"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:id="tr_RPO2_out" qual:qualitativeSpecies="RPO2" qual:transitionEffect="assignmentLevel" />
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0"/>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <lt/>
+                <ci>Oxygen</ci>
+		<cn type="integer"> 1 </cn> 
+              </apply>
+            </math>
+          </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Tc2">
+        <qual:listOfInputs>
+          <qual:input sboTerm="SBO:0000172" qual:id="tr_Tc2_in_RPcl" qual:thresholdLevel="1" qual:qualitativeSpecies="RPcl" qual:transitionEffect="none" qual:sign="positive"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:id="tr_Tc2_out" qual:qualitativeSpecies="Tc2" qual:transitionEffect="assignmentLevel"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0"/>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <lt/>
+                <ci> RPcl </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+          </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_RPcl">
+        <qual:listOfInputs>
+          <qual:input sboTerm="SBO:0000172" qual:id="tr_RPcl_in_Carbon1" qual:thresholdLevel="1" qual:qualitativeSpecies="Carbon1" qual:transitionEffect="none" qual:sign="positive"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:id="tr_RPcl_out" qual:qualitativeSpecies="RPcl" qual:transitionEffect="assignmentLevel"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0"/>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <geq/>
+                <ci> Carbon1 </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+          </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Rres">
+        <qual:listOfInputs>
+          <qual:input sboTerm="SBO:0000172" qual:id="tr_Rres_in_RPO2" qual:thresholdLevel="1" qual:qualitativeSpecies="RPO2" qual:transitionEffect="none" qual:sign="positive"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:id="tr_Rres_out" qual:qualitativeSpecies="Rres" qual:transitionEffect="assignmentLevel"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0"/>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <lt/>
+                <ci>RPO2</ci>
+                <cn type="integer">1</cn>
+              </apply>
+            </math>
+          </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+    </qual:listOfTransitions>
+  </model>
+</sbml>

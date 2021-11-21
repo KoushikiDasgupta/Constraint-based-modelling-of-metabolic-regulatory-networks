@@ -1,0 +1,13 @@
+obj : MAX(Growth)
+
+TC1 0	10.5
+TC2 0	10.5
+Growth 0	1000
+
+STARTING POINT
+
+Carbon1	10
+Carbon2	10
+Oxygen	1000
+
+RPcl	1

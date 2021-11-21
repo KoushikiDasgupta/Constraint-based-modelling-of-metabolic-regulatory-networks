@@ -1,0 +1,25 @@
+obj : MAX(Growth)
+
+
+Tc1 0 10.5
+Tc2 0 10.5
+Td 0 12
+Te 0 12
+Tf 0 5
+Th 0 5
+To2 0 15
+
+STARTING POINT
+Carbon1	0
+Carbon2	10
+Hext	0
+Dext	0
+Eext	0
+Fext	0
+Oxygen	0
+Biomass	0
+
+RPc1 1
+RPh 0
+RPO2 1
+RPb 0

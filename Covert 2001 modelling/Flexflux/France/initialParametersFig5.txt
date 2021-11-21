@@ -1,0 +1,21 @@
+biomassReaction
+Growth
+
+timeStep
+0.01
+
+nSteps
+300
+
+initBiomass
+0.01
+
+initConcentrations
+Carbon1	10
+Carbon2	10
+Hext	0
+Dext	0
+Eext	0
+Fext	0
+Oxygen	100
+Biomass	0

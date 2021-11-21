@@ -1,0 +1,21 @@
+biomassReaction
+Growth
+
+timeStep
+0.01
+
+nSteps
+200
+
+initBiomass
+0.1
+
+
+initConcentrations
+
+Carbon1	20
+Carbon2	20
+Oxygen	100
+
+initRegStates
+RPcl	1
